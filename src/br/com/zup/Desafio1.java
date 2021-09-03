@@ -29,5 +29,14 @@ public class Desafio1 {
         System.out.println("Digite o telefone do funcionário: ");
         telefoneFuncionario = leitor.nextLine();
 
+        //adicionando funcionário a lista
+        listaFuncionarios.put(cpfFuncionario, "|| Nome: " + nomeFuncionario + " || Telefone: " + telefoneFuncionario + " || Email: " + emailFuncionario);
+
+        //imprimindo lista
+        for (String impressaLista: listaFuncionarios.keySet()) {
+            System.out.println("------Zuppers Cadastrados------");
+            System.out.println("Funcionario: " + listaFuncionarios.get(impressaLista) + " || CPF: " + impressaLista);
+        }
+
     }
 }
