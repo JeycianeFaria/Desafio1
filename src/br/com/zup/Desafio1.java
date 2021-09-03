@@ -19,6 +19,7 @@ public class Desafio1 {
         String excluirFuncionario;
         String nomeFuncionario;
         String telefoneFuncionario;
+        boolean cpfExistente = false;
         boolean exibirMenu = true;
         int opcaoMenuSelecionada = 0;
 
@@ -44,17 +45,41 @@ public class Desafio1 {
                 //Recebendo dados do usuário para cadastro
                 System.out.println("Digite o nome completo do funcionário: ");
                 nomeFuncionario = leitor.nextLine();
-                System.out.println("Digite o CPF do funcionário");
+                System.out.println("Digite o CPF do funcionário:");
                 cpfFuncionario = leitor.nextLine();
                 System.out.println("Digite o e-mail do funcionário:");
                 emailFuncionario = leitor.nextLine();
                 System.out.println("Digite o telefone do funcionário: ");
                 telefoneFuncionario = leitor.nextLine();
 
-                //adicionando funcionário a lista
-                listaFuncionarios.put(cpfFuncionario, nomeFuncionario + " ||Telefone: " + telefoneFuncionario + " ||Email: " + emailFuncionario);
+                if (listaFuncionarios.size() != 0){
 
-                System.out.println("\nFuncionário cadastrado com sucesso!\n");
+                    for (String funcionarios : listaFuncionarios.keySet()){
+                        if (funcionarios.equals(cpfFuncionario)){
+                            cpfExistente = true;
+                            break;
+                        }
+                    }
+
+                    if (cpfExistente){
+                        //cpf já existente
+                        System.out.println("\nO CPF já foi cadastrado anteriormente!\n");
+                    }else {
+
+                        //adicionar funcionário a lista
+                        listaFuncionarios.put(cpfFuncionario, nomeFuncionario + " ||Telefone: " + telefoneFuncionario + " ||Email: " + emailFuncionario);
+
+                        System.out.println("\nFuncionário cadastrado com sucesso!\n");
+                    }
+
+                }else{
+
+                    //adicionando funcionário a lista
+                    listaFuncionarios.put(cpfFuncionario, nomeFuncionario + " ||Telefone: " + telefoneFuncionario + " ||Email: " + emailFuncionario);
+
+                    System.out.println("\nFuncionário cadastrado com sucesso!\n");
+
+                }
 
             } else if (opcaoMenuSelecionada == 2) {
 
@@ -78,7 +103,7 @@ public class Desafio1 {
                 for (String funcionarios : listaFuncionarios.keySet()) {
                     if (funcionarios.equals(excluirFuncionario)) {
                         excluirCPF = excluirFuncionario;
-                        //break;
+                        break;
                     }
                 }
 
@@ -88,7 +113,7 @@ public class Desafio1 {
                     System.out.println("\nFuncionário excluído com sucesso!\n");
 
                 } else {
-                    System.out.println("\nCPF digitado inexistente em funcionários cadastrados!\n");
+                    System.out.println("\nO CPF digitado é inexistente na lista de  funcionários cadastrados!\n");
                 }
 
             } else if (opcaoMenuSelecionada == 4) {
