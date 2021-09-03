@@ -15,10 +15,12 @@ public class Desafio1 {
         //variáveis
         String cpfFuncionario;
         String emailFuncionario;
+        String excluirCPF = "";
+        String excluirFuncionario;
         String nomeFuncionario;
         String telefoneFuncionario;
-        int opcaoMenuSelecionada = 0;
         boolean exibirMenu = true;
+        int opcaoMenuSelecionada = 0;
 
 
         //Menu
@@ -27,11 +29,12 @@ public class Desafio1 {
             System.out.println("O que você deseja fazer?");
             System.out.println("1- Cadastrar novo funcionário.");
             System.out.println("2- Exibir lista de todos os funcionários cadastrados.");
-            System.out.println("3- Sair!");
+            System.out.println("3- Excluir funcionário.");
+            System.out.println("4- Sair!");
 
             //recebendo oção do usuário
             opcaoMenuSelecionada = leitor.nextInt();
-            leitor.nextLine(); //adicionar o enter do usuário para não dar erro!
+            leitor.nextLine();
 
             //Opções Menu
             if (opcaoMenuSelecionada == 1) {
@@ -51,27 +54,52 @@ public class Desafio1 {
                 //adicionando funcionário a lista
                 listaFuncionarios.put(cpfFuncionario, nomeFuncionario + " ||Telefone: " + telefoneFuncionario + " ||Email: " + emailFuncionario);
 
-                System.out.println("Funcionário cadastrado com sucesso! \n");
+                System.out.println("\nFuncionário cadastrado com sucesso!\n");
 
             } else if (opcaoMenuSelecionada == 2) {
 
                 System.out.println("------Zuppers Cadastrados------");
 
                 //Exibir lista Funcionarios
-                for (String impressaLista : listaFuncionarios.keySet()) {
-                    System.out.println("||Funcionario: " + listaFuncionarios.get(impressaLista) + " ||CPF: " + impressaLista);
+                for (String funcionarios : listaFuncionarios.keySet()) {
+                    System.out.println("||Funcionario: " + listaFuncionarios.get(funcionarios) + " ||CPF: " + funcionarios);
                 }
                 System.out.print("\n");
 
             } else if (opcaoMenuSelecionada == 3) {
 
+                System.out.println("------Excluir Funcionário------");
+
+                //Recebendo dados usuário
+                System.out.println("Digite o CPF do funcionário que deseja excluir: ");
+                excluirFuncionario = leitor.nextLine();
+
+                //buscar na lista se tem o CPF e armazenar na variavel de exclusão
+                for (String funcionarios : listaFuncionarios.keySet()) {
+                    if (funcionarios.equals(excluirFuncionario)) {
+                        excluirCPF = excluirFuncionario;
+                        //break;
+                    }
+                }
+
+                if (excluirCPF.equals(excluirFuncionario)) {
+
+                    listaFuncionarios.remove(excluirCPF);
+                    System.out.println("\nFuncionário excluído com sucesso!\n");
+
+                } else {
+                    System.out.println("\nCPF digitado inexistente em funcionários cadastrados!\n");
+                }
+
+            } else if (opcaoMenuSelecionada == 4) {
+
                 //Sair
                 exibirMenu = false;
-                System.out.println("Até a proxima!");
+                System.out.println("\nAté a proxima!");
 
             } else {
 
-                System.out.println("Opção selecioanda inexistente. Selecione novamente! \n ");
+                System.out.println("\nOpção selecioanda inexistente. Selecione novamente! \n ");
 
             }
 
