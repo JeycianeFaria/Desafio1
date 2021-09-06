@@ -63,6 +63,8 @@ public class Desafio1 {
                         if (funcionarios.equals(cpfFuncionario)) {
                             cpfExistente = true;
                             break;
+                        }else {
+                            cpfExistente = false;
                         }
 
                     }
@@ -129,7 +131,7 @@ public class Desafio1 {
                         listaFuncionarios.remove(excluirCPF);
                         System.out.println("\nZupper excluído com sucesso!\n");
                     }else {
-                        System.out.println("\nZupper não excluido da lista de funcionários!\n");
+                        System.out.println("\nZupper não excluído da lista de funcionários!\n");
                     }
 
                 } else {
