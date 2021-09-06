@@ -92,8 +92,6 @@ public class Desafio1 {
                 }
 
 
-
-
             } else if (opcaoMenuSelecionada == 2) {
 
                 System.out.println("\n------Zuppers Cadastrados------\n");
@@ -110,6 +108,7 @@ public class Desafio1 {
                     System.out.println("\nNenhum Zupper cadastrado!\n ");
                 }
 
+
             } else if (opcaoMenuSelecionada == 3) {
 
                 System.out.println("------Excluir Zupper------");
@@ -118,7 +117,7 @@ public class Desafio1 {
                 System.out.println("Digite o CPF do zupper que deseja excluir: ");
                 excluirFuncionario = leitor.nextLine();
 
-                //buscar na lista se tem o CPF e armazenar na variavel de exclusão
+                //buscar na lista o CPF e armazenar na variavel de exclusão
                 for (String funcionarios : listaFuncionarios.keySet()) {
 
                     if (funcionarios.equals(excluirFuncionario)) {
@@ -147,10 +146,12 @@ public class Desafio1 {
                     System.out.println("\nO CPF digitado é inexistente na lista de zuppers cadastrados!\n");
                 }
 
+
             } else if (opcaoMenuSelecionada == 4) {
 
                 exibirMenu = false;
                 System.out.println("\nAté a proxima!");
+
 
             } else {
                 System.out.println("\nOpção selecioanda inexistente. Selecione novamente! \n ");
