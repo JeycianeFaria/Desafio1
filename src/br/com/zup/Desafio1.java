@@ -55,34 +55,43 @@ public class Desafio1 {
                 System.out.println("Digite o telefone do funcionário: ");
                 telefoneFuncionario = leitor.nextLine();
 
+                if (!nomeFuncionario.equals("") && !emailFuncionario.equals("") && !telefoneFuncionario.equals("") && !cpfFuncionario.equals("")){
 
-                if (listaFuncionarios.size() != 0) {
+                    if (listaFuncionarios.size() != 0) {
 
-                    for (String funcionarios : listaFuncionarios.keySet()) {
+                        for (String funcionarios : listaFuncionarios.keySet()) {
 
-                        if (funcionarios.equals(cpfFuncionario)) {
-                            cpfExistente = true;
-                            break;
-                        }else {
-                            cpfExistente = false;
+                            if (funcionarios.equals(cpfFuncionario)) {
+                                cpfExistente = true;
+                                break;
+                            }else {
+                                cpfExistente = false;
+                            }
+
                         }
 
-                    }
+                        if (cpfExistente) {
+                            //cpf já existente
+                            System.out.println("\nO CPF já foi cadastrado anteriormente!\n");
+                        } else {
+                            //adicionar funcionário a lista
+                            listaFuncionarios.put(cpfFuncionario, nomeFuncionario + " ||Telefone: " + telefoneFuncionario + " ||Email: " + emailFuncionario);
+                            System.out.println("\nZupper cadastrado com sucesso!\n");
+                        }
 
-                    if (cpfExistente) {
-                        //cpf já existente
-                        System.out.println("\nO CPF já foi cadastrado anteriormente!\n");
                     } else {
-                        //adicionar funcionário a lista
+                        //adicionando funcionário a lista
                         listaFuncionarios.put(cpfFuncionario, nomeFuncionario + " ||Telefone: " + telefoneFuncionario + " ||Email: " + emailFuncionario);
                         System.out.println("\nZupper cadastrado com sucesso!\n");
                     }
 
-                } else {
-                    //adicionando funcionário a lista
-                    listaFuncionarios.put(cpfFuncionario, nomeFuncionario + " ||Telefone: " + telefoneFuncionario + " ||Email: " + emailFuncionario);
-                    System.out.println("\nZupper cadastrado com sucesso!\n");
+                }else{
+
+                    System.out.println("\nDados incompletos, funcionário não cadastrado!\n");
+
                 }
+
+
 
 
             } else if (opcaoMenuSelecionada == 2) {
