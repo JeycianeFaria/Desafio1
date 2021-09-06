@@ -13,6 +13,7 @@ public class Desafio1 {
 
 
         //variáveis
+        String confirmacaoExclusao;
         String cpfFuncionario;
         String emailFuncionario;
         String excluirCPF = "";
@@ -26,12 +27,14 @@ public class Desafio1 {
 
         //Menu
         while (exibirMenu) {
+
             System.out.println("------ Zup Innovation ------");
             System.out.println("O que você deseja fazer?");
             System.out.println("1- Cadastrar novo funcionário.");
             System.out.println("2- Exibir lista de todos os funcionários cadastrados.");
             System.out.println("3- Excluir funcionário.");
             System.out.println("4- Sair!");
+            System.out.println("Digite a opção desejada desejada: ");
 
             //recebendo oção do usuário
             opcaoMenuSelecionada = leitor.nextInt();
@@ -40,7 +43,7 @@ public class Desafio1 {
             //Opções Menu
             if (opcaoMenuSelecionada == 1) {
 
-                System.out.println("------Cadastro Funcionarios Zup------");
+                System.out.println("------Cadastro Funcionários Zup------");
 
                 //Recebendo dados do usuário para cadastro
                 System.out.println("Digite o nome completo do funcionário: ");
@@ -52,80 +55,94 @@ public class Desafio1 {
                 System.out.println("Digite o telefone do funcionário: ");
                 telefoneFuncionario = leitor.nextLine();
 
-                if (listaFuncionarios.size() != 0){
 
-                    for (String funcionarios : listaFuncionarios.keySet()){
-                        if (funcionarios.equals(cpfFuncionario)){
+                if (listaFuncionarios.size() != 0) {
+
+                    for (String funcionarios : listaFuncionarios.keySet()) {
+
+                        if (funcionarios.equals(cpfFuncionario)) {
                             cpfExistente = true;
                             break;
                         }
+
                     }
 
-                    if (cpfExistente){
+                    if (cpfExistente) {
                         //cpf já existente
                         System.out.println("\nO CPF já foi cadastrado anteriormente!\n");
-                    }else {
-
+                    } else {
                         //adicionar funcionário a lista
                         listaFuncionarios.put(cpfFuncionario, nomeFuncionario + " ||Telefone: " + telefoneFuncionario + " ||Email: " + emailFuncionario);
-
-                        System.out.println("\nFuncionário cadastrado com sucesso!\n");
+                        System.out.println("\nZupper cadastrado com sucesso!\n");
                     }
 
-                }else{
-
+                } else {
                     //adicionando funcionário a lista
                     listaFuncionarios.put(cpfFuncionario, nomeFuncionario + " ||Telefone: " + telefoneFuncionario + " ||Email: " + emailFuncionario);
-
-                    System.out.println("\nFuncionário cadastrado com sucesso!\n");
-
+                    System.out.println("\nZupper cadastrado com sucesso!\n");
                 }
+
 
             } else if (opcaoMenuSelecionada == 2) {
 
-                System.out.println("------Zuppers Cadastrados------");
+                System.out.println("\n------Zuppers Cadastrados------\n");
 
-                //Exibir lista Funcionarios
-                for (String funcionarios : listaFuncionarios.keySet()) {
-                    System.out.println("||Funcionario: " + listaFuncionarios.get(funcionarios) + " ||CPF: " + funcionarios);
+                if (listaFuncionarios.size() != 0) {
+                    //Exibir lista Funcionarios
+                    for (String funcionarios : listaFuncionarios.keySet()) {
+                        System.out.println("Zupper " + listaFuncionarios.get(funcionarios) + " ||CPF: " + funcionarios);
+                    }
+
+                    System.out.println("\nTotal de Zuppers cadastrados = " + listaFuncionarios.size() + "\n");
+
+                } else {
+                    System.out.println("\nNenhum Zupper cadastrado!\n ");
                 }
-                System.out.print("\n");
 
             } else if (opcaoMenuSelecionada == 3) {
 
-                System.out.println("------Excluir Funcionário------");
+                System.out.println("------Excluir Zupper------");
 
                 //Recebendo dados usuário
-                System.out.println("Digite o CPF do funcionário que deseja excluir: ");
+                System.out.println("Digite o CPF do zupper que deseja excluir: ");
                 excluirFuncionario = leitor.nextLine();
 
                 //buscar na lista se tem o CPF e armazenar na variavel de exclusão
                 for (String funcionarios : listaFuncionarios.keySet()) {
+
                     if (funcionarios.equals(excluirFuncionario)) {
                         excluirCPF = excluirFuncionario;
+                        System.out.println("\nO zupper encontrado foi:");
+                        System.out.println(listaFuncionarios.get(funcionarios) + " ||CPF: " + funcionarios);
                         break;
                     }
+
                 }
 
                 if (excluirCPF.equals(excluirFuncionario)) {
 
-                    listaFuncionarios.remove(excluirCPF);
-                    System.out.println("\nFuncionário excluído com sucesso!\n");
+                    System.out.println("\nDeseja mesmo excluir o zupper do cadastro?");
+                    System.out.println("Digite S/N");
+                    confirmacaoExclusao = leitor.next();
+
+                    if (confirmacaoExclusao.equals("S") || confirmacaoExclusao.equals("s")) {
+                        listaFuncionarios.remove(excluirCPF);
+                        System.out.println("\nZupper excluído com sucesso!\n");
+                    }else {
+                        System.out.println("\nZupper não excluido da lista de funcionários!\n");
+                    }
 
                 } else {
-                    System.out.println("\nO CPF digitado é inexistente na lista de  funcionários cadastrados!\n");
+                    System.out.println("\nO CPF digitado é inexistente na lista de zuppers cadastrados!\n");
                 }
 
             } else if (opcaoMenuSelecionada == 4) {
 
-                //Sair
                 exibirMenu = false;
                 System.out.println("\nAté a proxima!");
 
             } else {
-
                 System.out.println("\nOpção selecioanda inexistente. Selecione novamente! \n ");
-
             }
 
         }
